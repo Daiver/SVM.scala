@@ -11,6 +11,7 @@ class InputDataSpec extends FlatSpec with Matchers {
     val trainImages = readMNISTImages (mnistFolder + "train-images-idx3-ubyte")
     trainImages.rows should be (60000)
     trainImages.cols should be (28 * 28)
+    trainImages(0, 0) should be (0)
   }
 
   it should "read test images" in {
@@ -22,6 +23,7 @@ class InputDataSpec extends FlatSpec with Matchers {
   it should "read train labels" in {
     val trainLabels = readMNISTLabels (mnistFolder + "train-labels-idx1-ubyte")
     trainLabels.length should be (60000)
+    trainLabels(0) should be (5)
   }
 
   it should "read test labels" in {
