@@ -8,6 +8,20 @@ import scala.reflect.ClassTag
 //TODO: Should use scala.io 
 package object InputData {
 
+  trait Caster[@specialized(Double) T]{
+    def cast(v: Int): T
+  }
+
+  class DoubleCaster extends Caster[Double]{
+    def cast(v: Int): Double = v.toDouble
+  }
+  
+  object Casters {
+    implicit val doubleCaster = new DoubleCaster
+  }
+
+  def cast[@specialized(Double) T: Caster](v: Int) = implicitly[Caster[T]].cast(v)
+
   def readMNISTImages(fname: String): DenseMatrix[Double] = {
     var in = new DataInputStream(new BufferedInputStream(new FileInputStream(fname)))
     val magic = in.readInt
