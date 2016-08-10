@@ -25,7 +25,7 @@ package object optimization {
     var oldGrad     = DenseVector.zeros[Double](nFeatures + 1)
 
     for(iterInd <- 0 until nIters){
-      val indices = util.Random.shuffle((0 until nSamples).toList)
+      val indices = rand.shuffle((0 until nSamples).toList)
       for(iterInd2 <- 0 until nSamples / batchSize){
 
         var grad : DenseVector[Double] = 

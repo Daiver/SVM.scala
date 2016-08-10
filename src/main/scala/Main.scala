@@ -62,9 +62,15 @@ object App {
     val dataTrain   = DenseMatrix.vertcat(data1, data2)
     val labelsTrain = DenseVector.vertcat(labels1, labels2)
 
-    val batchSize = 550
-    val momentCoeff = 1.9
-    val weights = time { SGD(svmError, svmGradient(0.01, _, _, _), dataTrain, labelsTrain, wInit, 10, batchSize, 0.0001, momentCoeff) }
+    val batchSize = 500
+    val momentCoeff = 2.5
+    val learningRate = 0.0001
+    val nIters = 10
+    val lambda = 0.003
+    val weights = time { SGD(
+        svmError, svmGradient(lambda, _, _, _), 
+        dataTrain, labelsTrain, wInit, 
+        nIters, batchSize, learningRate, momentCoeff) }
     val svm = SVM(weights(0 to weights.length - 2), weights(weights.length - 1))
     PairwiseClassifier(ind1, ind2, svm)
   }
