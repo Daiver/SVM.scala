@@ -26,7 +26,7 @@ object App {
     val errTrain = clf.evaluate(trainImages, trainLabels)
     val errTest  = clf.evaluate(testImages, testLabels)
     println("train error " + (100.0 * errTrain.toDouble / trainLabels.length.toDouble) + "%")
-    println("test error " + (100.0 * errTest.toDouble / testLabels.length.toDouble) + "%")
+    println("test error  " + (100.0 * errTest.toDouble / testLabels.length.toDouble) + "%")
     println("Finish!")
   }
 
