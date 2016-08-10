@@ -17,10 +17,10 @@ object App {
     println("Start!")
 
     val mnistFolder = "/home/daiver/coding/data/mnist/"
-    val trainImages = readMNISTImages (mnistFolder + "train-images-idx3-ubyte")
-    val trainLabels = readMNISTLabels (mnistFolder + "train-labels-idx1-ubyte")
-    val testImages  = readMNISTImages (mnistFolder + "t10k-images-idx3-ubyte")
-    val testLabels  = readMNISTLabels (mnistFolder + "t10k-labels-idx1-ubyte")
+    val trainImages = readMNISTImages(mnistFolder + "train-images-idx3-ubyte")
+    val trainLabels = readMNISTLabels(mnistFolder + "train-labels-idx1-ubyte")
+    val testImages  = readMNISTImages(mnistFolder + "t10k-images-idx3-ubyte")
+    val testLabels  = readMNISTLabels(mnistFolder + "t10k-labels-idx1-ubyte")
 
     val clf = trainOneVsAllClassifier(trainImages, trainLabels, 10)
     val errTrain = clf.evaluate(trainImages, trainLabels)
