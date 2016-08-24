@@ -4,6 +4,7 @@ import java.io._
 import breeze.linalg._
 import breeze.math._
 import scala.reflect.ClassTag
+import utils._
 
 //TODO: Should use scala.io 
 package object InputData {
@@ -61,7 +62,7 @@ package object InputData {
     //DenseMatrix.tabulate(nCols * nRows, nImages) {(i, j) => in.readUnsignedByte.asInstanceOf[T]} t
   //}
 
-  //def readMNISTLabels[T: ClassTag](fname: String): DenseVector[T] = {
+/*  def readMNISTLabels[T: ClassTag](fname: String): DenseVector[T] = {*/
     //var in = new DataInputStream(new BufferedInputStream(new FileInputStream(fname)))
     //val magic = in.readInt
     //if(magic != 2049){
@@ -69,7 +70,7 @@ package object InputData {
       //System.exit(1)
     //}
     //val nLabels = in.readInt
-    //DenseVector.tabulate(nLabels){i => in.readUnsignedByte}
+    //DenseVector.tabulate[T](nLabels){i => convertInt[T](in.readUnsignedByte)}
   //}
 
 }

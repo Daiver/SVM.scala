@@ -1,5 +1,6 @@
 
 import breeze.linalg._
+import scala.reflect.runtime.universe._
 
 package object utils {
 
@@ -25,5 +26,22 @@ package object utils {
       result
   }
 
+  //trait FromIntConverter[T]{
+	//def apply(int: Int): T
+  //}
+
+  //def convertInt[T](int: Int)(implicit converter: FromIntConverter[T]): T = converter(int)
+
+  //implicit val IntToIntConverter = new FromIntConverter[Int]{
+	//def apply(int: Int) = int
+  //}
+
+  //implicit val IntToFloatConverter = new FromIntConverter[Float]{
+	//def apply(int: Int) = int.toFloat
+  //}
+
+  //implicit val IntToDoubleConverter = new FromIntConverter[Double]{
+	//def apply(int: Int) = int.toDouble
+  //}
 
 }

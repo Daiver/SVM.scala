@@ -11,11 +11,14 @@ package object optimization {
       wInit: DenseVector[Double], 
       nIters: Int, 
       batchSize: Int, 
-      stepSize: Double,
-      momentCoeff: Double
+      stepSizeInit: Double,
+      momentCoeff: Double,
+      stepDecay: Boolean
     ) = {
     assert(data.cols + 1 == wInit.length)
     assert(data.rows == labels.length)
+
+
     val nSamples    = data.rows
     val nFeatures   = data.cols
     var weights     = wInit
@@ -27,7 +30,7 @@ package object optimization {
     for(iterInd <- 0 until nIters){
       val indices = rand.shuffle((0 until nSamples).toList)
       for(iterInd2 <- 0 until nSamples / batchSize){
-
+        val stepSize = if(stepDecay) stepSizeInit / (1 + iterInd2 + iterInd * nSamples / batchSize).toDouble else stepSizeInit
         var grad : DenseVector[Double] = 
           (0 until batchSize).par.map( i => {
             val index  = indices(iterInd2 * batchSize + i)
